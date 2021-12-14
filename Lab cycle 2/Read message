@@ -1,0 +1,109 @@
+Activity_main.xml:
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/E1"
+       android:text="Enter the details:"/>
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="SUBMIT"
+        android:layout_marginLeft="140dp"
+        android:id="@+id/B1"
+        android:onClick="rr"/>
+</LinearLayout>
+
+
+MainActivity.java:
+
+package com.example.sjcet.phase3;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void rr(View view) {
+        Button b1=(Button)findViewById(R.id.B1);
+        EditText E1=(EditText)findViewById(R.id.E1);
+        String s=E1.getText().toString();
+        Intent i=new Intent(MainActivity.this,NewActivity.class);
+        i.putExtra("message key",s);
+        startActivity(i);
+    }
+
+
+activity_new.xml:
+
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".NewActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText
+        android:id="@+id/E2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+
+
+NewActivity.java:
+
+package com.example.sjcet.phase3;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.EditText;
+
+public class NewActivity extends AppCompatActivity {
+    EditText msg;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_new);
+        msg=(EditText)findViewById(R.id.E2);
+        Intent i=getIntent();
+        String s=i.getStringExtra("message key");
+        msg.setText(s);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+

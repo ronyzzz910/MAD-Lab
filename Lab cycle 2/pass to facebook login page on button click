@@ -1,0 +1,45 @@
+Activity_main.xml:
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+   <Button
+       android:layout_width="150dp"
+       android:layout_height="40dp"
+       android:text="Facebook"
+       android:id="@+id/B1"
+       android:onClick="fbClick"/>
+</LinearLayout>
+
+MainActivity.java:
+
+package com.example.sjcet.phase2;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void fbClick(View view) {
+        try {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://profile/MY_PAGE_ID"));
+            startActivity(i);
+        }catch (Exception e){
+            startActivity(new Intent(Intent.ACTION_VIEW,    Uri.parse("http://www.facebook.com/MY_PAGE_NAME")));
+        }
+    }
+}
+
+
