@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#191970"
+    android:id="@+id/ll1">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click Here"
+        android:background="#32cd32"
+        android:textColor="#3f76ff"
+        android:id="@+id/btn1"
+        android:onClick="Click"/>
+</LinearLayout>
+
+
+java code:
+
+
+package com.example.sjcet.a44;
+import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+    public void Click(View view) {
+        LinearLayout layout1;
+        layout1 = findViewById(R.id.ll1);
+        layout1.setBackgroundColor(Color.RED);
+    }
+}
